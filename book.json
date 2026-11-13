@@ -1,0 +1,112 @@
+{
+  "id": "astro-vivliostyle-sample",
+  "title": "AstroとVivliostyleのサンプルブック",
+  "subtitle": "Markdownから小さなPDFを作るサンプル",
+  "author": "Sample Author",
+  "publishedAt": "2026-11-13",
+  "edition": "Sample Edition",
+  "language": "ja",
+  "theme": "japanese-technical",
+  "codeLineNumbers": false,
+  "page": {
+    "size": "A5",
+    "margins": {
+      "top": "18mm",
+      "bottom": "20mm",
+      "inner": "20mm",
+      "outer": "15mm"
+    },
+    "showPageNumbers": true,
+    "showRunningHeaders": true
+  },
+  "cover": {
+    "trimWidthMm": 148,
+    "trimHeightMm": 210,
+    "bleedMm": 3,
+    "spineWidthMm": 10,
+    "safeMarginMm": 5,
+    "titleLines": [
+    "AstroとVivliostyleの",
+    "サンプルブック"
+    ],
+    "eventLabel": "PUBLIC SAMPLE",
+    "version": "2026年11月13日 sample"
+  },
+  "frontMatter": [
+    {
+      "source": "00-preface",
+      "title": "はじめに"
+    },
+    {
+      "source": "00-content",
+      "title": "この本の内容"
+    }
+  ],
+  "contents": {
+    "enabled": true,
+    "title": "目次",
+    "maxDepth": 3
+  },
+  "chapters": [
+    {
+      "source": "01-overview",
+      "number": 1,
+      "title": "小さな本の制作フロー",
+      "summary": "MarkdownからPDFまでの最小の流れを確認します。",
+      "color": "#cfde22",
+      "tint": "#f9fbe9",
+      "ink": "#1d156b",
+      "startOnRight": true
+    },
+    {
+      "source": "02-environment",
+      "number": 2,
+      "title": "サンプル環境を作る",
+      "summary": "新しいフォルダからHTMLとPDFを生成します。",
+      "color": "#48c7d9",
+      "tint": "#e9f8fa",
+      "ink": "#075766",
+      "startOnRight": true
+    },
+    {
+      "source": "03-manuscript",
+      "number": 3,
+      "title": "Markdownの基本",
+      "summary": "見出し、表、コード、画像を原稿へ追加します。",
+      "color": "#f7d447",
+      "tint": "#fff9dc",
+      "ink": "#5c4b00",
+      "startOnRight": true
+    },
+    {
+      "source": "04-design",
+      "number": 4,
+      "title": "CSSでページを整える",
+      "summary": "A5判の余白と本文の見た目を設定します。",
+      "color": "#8557d6",
+      "tint": "#f3effb",
+      "ink": "#3e216b",
+      "startOnRight": true
+    },
+    {
+      "source": "05-pdf",
+      "number": 5,
+      "title": "PDFを出力する",
+      "summary": "VivliostyleでPDFを作り、生成結果を確認します。",
+      "color": "#f05d5e",
+      "tint": "#fff0ef",
+      "ink": "#6e2023",
+      "startOnRight": true
+    }
+  ],
+  "backMatter": [
+    {
+      "source": "90-afterword",
+      "title": "おわりに"
+    },
+    {
+      "source": "99-colophon",
+      "title": "奥付"
+    }
+  ]
+}

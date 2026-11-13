@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0",
+  "id": "nekono-shippo",
+  "company": {
+    "id": "nekono-shippo",
+    "name": "ねこのしっぽ",
+    "website": "https://www.shippo.co.jp/neko/"
+  },
+  "verifiedOn": "2026-11-03",
+  "sourceUrls": [
+    "https://www.shippo.co.jp/neko/making/digital.shtml",
+    "https://www.shippo.co.jp/neko/faq_3.shtml",
+    "https://www.shippo.co.jp/neko/order/download.shtml"
+  ],
+  "products": {
+    "a5-pdf-perfect-binding": {
+      "id": "a5-pdf-perfect-binding",
+      "label": "A5・PDFデータ入稿・無線綴じ（確認済み範囲）",
+      "printMethod": "unknown",
+      "binding": "perfect-binding",
+      "paper": "unknown",
+      "supportedSizes": ["A5"],
+      "requirements": {
+        "trimSizeMm": [148, 210],
+        "bleedMm": 3,
+        "cropMarks": "not-required",
+        "colorMode": {
+          "body": ["grayscale", "unknown"],
+          "cover": ["CMYK", "RGB"],
+          "rgbProfile": ["sRGB", "AdobeRGB"],
+          "rgbConversion": "JapanColor 2011 Coated"
+        },
+        "pdfFormat": ["PDF"],
+        "pdfX": "unknown",
+        "fontEmbedding": "unknown",
+        "imageDpi": {
+          "fullColor": 350,
+          "grayscale": [350, 600],
+          "monochrome": [600, 1200]
+        },
+        "spineWidth": {
+          "formula": "official-spine-calculator",
+          "status": "calculator-required"
+        },
+        "fileSplit": "single-pdf-recommended-for-pdf-submission",
+        "pageNumbers": "required-or-strongly-recommended"
+      }
+    }
+  },
+  "notes": [
+    "A5のタチキリ3mm込み片面サイズは154mm x 216mm。",
+    "表紙一体型は302mm x 216mm（3mmタチキリ）に背幅を加算。",
+    "本文・表紙ともトンボは不要と公式マニュアルに記載。",
+    "PDF/Xの必須条件は確認できていない。",
+    "RGBは埋め込みプロファイルを使用してCMYK変換されるため、色味変化を確認する。",
+    "公式テンプレートと背幅計算フォームを優先し、プロファイルの固定式を入稿確定値としない。"
+  ]
+}

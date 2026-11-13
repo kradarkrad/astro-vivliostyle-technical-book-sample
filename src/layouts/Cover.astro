@@ -1,0 +1,33 @@
+---
+import book from '../../book.json';
+import '../styles/cover.css';
+
+const cover = book.cover;
+const sheetWidth = cover.trimWidthMm + cover.bleedMm * 2;
+const sheetHeight = cover.trimHeightMm + cover.bleedMm * 2;
+const panelStyle = `--trim-width: ${cover.trimWidthMm}mm; --trim-height: ${cover.trimHeightMm}mm; --bleed: ${cover.bleedMm}mm; --spine-width: ${cover.spineWidthMm}mm; --safe-margin: ${cover.safeMarginMm}mm; --sheet-width: ${sheetWidth}mm; --sheet-height: ${sheetHeight}mm;`;
+---
+
+<!doctype html>
+<html lang={book.language} class="cover-sheet" style={panelStyle}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content={book.author} />
+    <meta name="description" content={book.subtitle} />
+    <title>{book.title} - 表紙</title>
+  </head>
+  <body>
+    <main class="cover">
+      <section class="cover-panel front-cover" aria-label="表1">
+        <h1>
+          {cover.titleLines.map((line) => <span>{line}</span>)}
+        </h1>
+        <p class="cover-author">{book.author}</p>
+        <p class="cover-event">{cover.eventLabel}</p>
+        <p class="cover-version">{cover.version}</p>
+      </section>
+      <div class="safe-area" aria-hidden="true"></div>
+    </main>
+  </body>
+</html>

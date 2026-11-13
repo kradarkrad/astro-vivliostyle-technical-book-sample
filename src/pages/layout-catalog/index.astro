@@ -1,0 +1,276 @@
+---
+import '../../styles/layout-catalog.css';
+
+const proposals = [
+  {
+    id: 'neon-study',
+    number: 'A',
+    name: 'Neon Study Deck',
+    tagline: '学習参考書 × 開発ツール',
+    color: '#cfde22',
+    dark: '#1d156b',
+    support: '#48c7d9',
+    accent: '#f05d5e',
+    keywords: '明るい / グリッド / ネオン / 章ごとの色分け',
+    impression: '元気に読み進められ、章ごとの違いが記憶に残る。',
+    ease: '非常に高い',
+    recommendation: '★★★★★',
+  },
+  {
+    id: 'workbook',
+    number: 'B',
+    name: 'Color Coded Workbook',
+    tagline: '学習参考書 × ワークブック',
+    color: '#2d72d9',
+    dark: '#243047',
+    support: '#f28c28',
+    accent: '#55a868',
+    keywords: '付箋 / インデックス / 色分け / 情報整理',
+    impression: '必要な情報を探しやすく、学習の進行が見える。',
+    ease: '非常に高い',
+    recommendation: '★★★★☆',
+  },
+  {
+    id: 'code-arcade',
+    number: 'C',
+    name: 'Code Arcade Magazine',
+    tagline: 'ゲームUI × 開発者向け雑誌',
+    color: '#47cf73',
+    dark: '#151a35',
+    support: '#fad44d',
+    accent: '#a86ea6',
+    keywords: 'ゲームUI / ネオン / コードパネル / 雑誌',
+    impression: '技術書でありながら、画面をめくるような高揚感がある。',
+    ease: '中程度',
+    recommendation: '★★★☆☆',
+  },
+];
+
+const chapters = [
+  { number: '01', name: '方向性', color: '#48c7d9', ink: '#075766' },
+  { number: '02', name: 'Neon Study Deck', color: '#cfde22', ink: '#1d156b' },
+  { number: '03', name: 'Color Coded Workbook', color: '#f28c28', ink: '#243047' },
+  { number: '04', name: 'Code Arcade Magazine', color: '#a86ea6', ink: '#24133b' },
+  { number: '05', name: '実装ガイド', color: '#f05d5e', ink: '#6e2023' },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>レイアウト提案カタログ</title>
+    <meta name="description" content="AstroとVivliostyleによる技術書のレイアウト提案を比較するカタログ" />
+  </head>
+  <body>
+    <main class="catalog">
+      <section class="catalog-cover catalog-page" aria-label="表紙">
+        <div class="cover-grid" aria-hidden="true"></div>
+        <div class="cover-orb cover-orb-lime" aria-hidden="true"></div>
+        <div class="cover-orb cover-orb-pink" aria-hidden="true"></div>
+        <div class="cover-copy">
+          <p class="catalog-kicker">ASTRO × VIVLIOSTYLE / DESIGN CATALOG</p>
+          <h1>技術書の<br /><span>レイアウト</span><br />提案集</h1>
+          <p class="cover-lead">派手で、楽しく、読みやすい。<br />A5判日本語技術書のための3つの方向性。</p>
+          <p class="cover-meta">Visual proposal book / 2026.11</p>
+        </div>
+        <div class="cover-sticker">HTML<br />CSS<br />PDF</div>
+      </section>
+
+      <section class="catalog-page intro-page">
+        <p class="section-label">01 / NORTH STAR</p>
+        <h2>このカタログの使い方</h2>
+        <p class="lead">
+          本書は、Astroで生成したHTMLをVivliostyleでPDFへ組版する技術書について、
+          表紙から奥付までのビジュアル方針を比較するためのデザインカタログです。
+        </p>
+        <div class="principle-grid">
+          <article><b>01</b><h3>派手さ</h3><p>章扉・目次・ラベルに強い色を集中させます。</p></article>
+          <article><b>02</b><h3>可読性</h3><p>本文は明るい紙面と安定した行長を守ります。</p></article>
+          <article><b>03</b><h3>実装性</h3><p>CSS変数、擬似要素、Paged Mediaで再現します。</p></article>
+          <article><b>04</b><h3>拡張性</h3><p>章カラーとテーマを分離して別の本にも流用します。</p></article>
+        </div>
+        <aside class="callout callout-blue">
+          <strong>判断のポイント</strong>
+          <p>色の印象だけでなく、長文・コード・表・ページまたぎを含めて比較してください。</p>
+        </aside>
+      </section>
+
+      <section class="catalog-page reference-page">
+        <p class="section-label">02 / INSPO RESEARCH</p>
+        <h2>Inspoで見つけた参考要素</h2>
+        <div class="reference-cards">
+          <article class="reference-card ref-weaviate">
+            <div class="ref-mark">W</div>
+            <div><h3>Weaviate</h3><p>ライム、濃紺、グリッド、ステッカー風の技術表現。</p><small>採用候補：章扉 / 章カラー / 幾何学模様</small></div>
+          </article>
+          <article class="reference-card ref-dropout">
+            <div class="ref-mark">:D</div>
+            <div><h3>Dropout TV</h3><p>赤・黄色・黒。図形を大きく使う勢いのある構成。</p><small>採用候補：表紙 / 章扉 / コラムラベル</small></div>
+          </article>
+          <article class="reference-card ref-codepen">
+            <div class="ref-mark">&lt;/&gt;</div>
+            <div><h3>CodePen</h3><p>コードパネル、緑・黄色・紫、重なりによる奥行き。</p><small>採用候補：コード / 図表 / 実行結果</small></div>
+          </article>
+        </div>
+        <h3 class="subheading">採用しない要素</h3>
+        <ul class="avoid-list">
+          <li>本文全体を濃色の背景にすること</li>
+          <li>Webのヒーロー表現をそのまま紙面に移すこと</li>
+          <li>細い線や低コントラストの文字</li>
+          <li>印刷時に潰れる複雑なグラデーション</li>
+        </ul>
+      </section>
+
+      <section class="catalog-page toc-page">
+        <p class="section-label">03 / CONTENT MAP</p>
+        <h2>目次の見え方</h2>
+        <p class="page-note">章番号、章カラー、章概要、ページ番号の優先順位をこの順番で設計します。</p>
+        <nav class="demo-toc" aria-label="カタログ目次">
+          {chapters.map((chapter) => (
+            <a href={`#proposal-${chapter.number}`} style={`--chapter-color:${chapter.color};--chapter-ink:${chapter.ink};`}>
+              <span class="demo-toc-number">{chapter.number}</span>
+              <span class="demo-toc-name">{chapter.name}</span>
+              <span class="demo-toc-leader"></span>
+              <span class="demo-toc-page">{Number(chapter.number) * 2 + 4}</span>
+            </a>
+          ))}
+        </nav>
+        <div class="toc-rules">
+          <span class="rule-swatch swatch-lime"></span><span>章カラーは1章1色</span>
+          <span class="rule-swatch swatch-navy"></span><span>本文文字は濃紺</span>
+          <span class="rule-swatch swatch-coral"></span><span>ページ番号は右端固定</span>
+        </div>
+      </section>
+
+      {proposals.map((proposal) => (
+        <section class={`catalog-page proposal-page proposal-${proposal.id}`} id={`proposal-${proposal.number}`} style={`--proposal-color:${proposal.color};--proposal-dark:${proposal.dark};--proposal-support:${proposal.support};--proposal-accent:${proposal.accent};`}>
+          <div class="proposal-ribbon">{proposal.number}</div>
+          <p class="section-label">04 / LAYOUT CONCEPT {proposal.number}</p>
+          <div class="proposal-heading">
+            <div>
+              <h2>{proposal.name}</h2>
+              <p class="proposal-tagline">{proposal.tagline}</p>
+            </div>
+            <div class="recommendation">{proposal.recommendation}</div>
+          </div>
+          <div class="concept-hero">
+            <div class="concept-window">
+              <div class="window-bar"><i></i><i></i><i></i><span>{proposal.name}</span></div>
+              <div class="window-body">
+                <b>{proposal.number} / CHAPTER</b>
+                <strong>楽しく学ぶ<br />技術の紙面</strong>
+                <span class="window-line"></span>
+              </div>
+            </div>
+            <div class="concept-notes">
+              <p><b>KEYWORDS</b><br />{proposal.keywords}</p>
+              <p><b>読後印象</b><br />{proposal.impression}</p>
+              <p><b>実装しやすさ</b><br />{proposal.ease}</p>
+            </div>
+          </div>
+          <div class="proposal-columns">
+            <article><h3>目次</h3><p>章番号を大きく置き、章カラーの帯とリーダー線でページ番号へ視線を誘導します。</p></article>
+            <article><h3>章扉</h3><p>章番号・タイトル・概要を中心に、CSS図形やグリッドを余白へ配置します。</p></article>
+            <article><h3>本文</h3><p>明るい紙面を基本に、見出しの左線と柱・ノンブルで章の存在感を保ちます。</p></article>
+            <article><h3>コード / 図表</h3><p>コードは濃色パネル、図表は淡色カード。ラベルを付けて色の意味を補います。</p></article>
+          </div>
+        </section>
+      ))}
+
+      <section class="catalog-page hierarchy-page">
+        <p class="section-label">08 / INFORMATION HIERARCHY</p>
+        <h2>見出し階層と情報の強弱</h2>
+        <div class="hierarchy-demo">
+          <div class="hierarchy-row hierarchy-h1"><span>H1</span><strong>章タイトル / Chapter title</strong><small>章扉専用・大きな数字・章カラー</small></div>
+          <div class="hierarchy-row hierarchy-h2"><span>H2</span><strong>2.1 Markdown原稿を設計する</strong><small>章カラーの縦線・改ページ抑制</small></div>
+          <div class="hierarchy-row hierarchy-h3"><span>H3</span><strong>ファイル構成を決める</strong><small>短い下線・本文との間隔</small></div>
+          <div class="hierarchy-row hierarchy-h4"><span>H4</span><strong>見出し直後の段落</strong><small>太字のみ・装飾を増やさない</small></div>
+          <p class="hierarchy-body">本文は濃紺の明朝体で読みやすく保ち、見出し・ラベル・図表番号にだけテーマカラーを使います。色がなくても階層が判別できるよう、サイズ、余白、線、番号を組み合わせます。</p>
+        </div>
+        <div class="callout-row">
+          <div class="mini-callout mini-note"><b>NOTE / 補足</b><span>背景色＋ラベル</span></div>
+          <div class="mini-callout mini-tip"><b>TIP / ヒント</b><span>明るいアクセント</span></div>
+          <div class="mini-callout mini-warning"><b>WARNING / 注意</b><span>高コントラスト</span></div>
+        </div>
+      </section>
+
+      <section class="catalog-page palette-page">
+        <p class="section-label">09 / CHAPTER COLOR SYSTEM</p>
+        <h2>章カラー一覧</h2>
+        <p class="page-note">色は装飾ではなく、章の識別と情報の優先順位を支えるトークンとして管理します。</p>
+        <div class="palette-list">
+          {chapters.map((chapter) => (
+            <div class="palette-row">
+              <div class="palette-block" style={`background:${chapter.color};color:${chapter.ink};`}>{chapter.number}</div>
+              <div class="palette-copy"><h3>{chapter.name}</h3><code>{chapter.color}</code><p>章扉 / 見出し線 / 柱 / ノンブル / 図表番号</p></div>
+            </div>
+          ))}
+        </div>
+        <div class="palette-footnote">電子版では彩度を維持し、印刷版では濃淡・罫線・ラベルへフォールバックします。</div>
+      </section>
+
+      <section class="catalog-page css-page">
+        <p class="section-label">10 / CSS BLUEPRINT</p>
+        <h2>推奨案のCSS設計</h2>
+        <div class="code-card">
+          <div class="code-card-head"><span>theme.css</span><b>Neon Study Deck</b></div>
+          <pre><code>:root &#123;
+  --book-paper: #fffdf5;
+  --book-ink: #17203d;
+  --theme-navy: #1d156b;
+  --theme-lime: #cfde22;
+  --theme-cyan: #48c7d9;
+  --theme-coral: #f05d5e;
+  --theme-purple: #8557d6;
+&#125;
+
+ .chapter[data-chapter-theme="coral"] &#123;
+  --chapter-color: var(--theme-coral);
+  --chapter-tint: #fff0ef;
+&#125;
+
+@page main:right &#123;
+  @top-right &#123; content: string(chapter-title); &#125;
+  @bottom-right &#123; content: counter(page); &#125;
+&#125;</code></pre>
+        </div>
+        <div class="css-checklist">
+          <span>✓ CSS変数</span><span>✓ data属性</span><span>✓ Named Pages</span><span>✓ string-set</span><span>✓ target-counter()</span><span>✓ 印刷フォールバック</span>
+        </div>
+      </section>
+
+      <section class="catalog-page implementation-page">
+        <p class="section-label">11 / IMPLEMENTATION PLAN</p>
+        <h2>実装へ進むときの順番</h2>
+        <ol class="implementation-list">
+          <li><b>テーマ変数</b><span>色、フォント、余白、コード背景をbook.cssから切り出す。</span></li>
+          <li><b>章カラー</b><span>book.jsonの章設定またはdata属性からCSS変数を切り替える。</span></li>
+          <li><b>目次</b><span>章番号、帯、リーダー線、target-counter()を整備する。</span></li>
+          <li><b>章扉</b><span>Named Pageと擬似要素で背景図形を追加する。</span></li>
+          <li><b>本文</b><span>h2〜h4、柱、ノンブル、図表、コードの共通スタイルを更新する。</span></li>
+          <li><b>検証</b><span>電子版・印刷版を生成し、長文・コード・表・改ページを目視する。</span></li>
+        </ol>
+        <aside class="callout callout-red">
+          <strong>実装範囲の注意</strong>
+          <p>このカタログは提案確認用です。既存の書籍テーマ、印刷所プロファイル、PDF検証処理は変更しません。</p>
+        </aside>
+      </section>
+
+      <section class="catalog-page catalog-colophon">
+        <div class="colophon-mark">A5<br />BOOK</div>
+        <p class="section-label">12 / COLOPHON</p>
+        <h2>レイアウト提案カタログ</h2>
+        <p>Astro + HTML + CSS + Vivliostyle</p>
+        <dl>
+          <dt>用途</dt><dd>全体レイアウトとテーマ比較</dd>
+          <dt>判型</dt><dd>A5 / 横書き / 日本語</dd>
+          <dt>提案</dt><dd>Neon Study Deck / Color Coded Workbook / Code Arcade Magazine</dd>
+          <dt>推奨</dt><dd>Neon Study Deck</dd>
+        </dl>
+        <p class="colophon-note">本書は既存書籍制作環境のビジュアル検討用サンプルです。</p>
+      </section>
+    </main>
+  </body>
+</html>

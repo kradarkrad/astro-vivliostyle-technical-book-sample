@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0",
+  "defaults": {
+    "format": "pdf",
+    "language": "ja",
+    "title": "AstroとVivliostyleのサンプルブック",
+    "author": "Sample Author",
+    "source": "dist-book/print-body/index.html",
+    "size": "132mm,194mm",
+    "colorMode": "grayscale-requested",
+    "cropMarks": true,
+    "bleedMm": 3,
+    "preflight": null,
+    "printerId": "generic",
+    "productId": "general",
+    "expectedTrimPt": [419.5275, 595.2756]
+  },
+  "profiles": {
+    "digital": {
+      "label": "電子書籍PDF",
+      "source": "dist-book/ebook/index.html",
+      "output": "dist-books/sample/digital/sample-digital.pdf",
+      "report": "dist-books/sample/reports/digital-report",
+      "size": "A5",
+      "colorMode": "full-color",
+      "cropMarks": false,
+      "bleedMm": 0,
+      "printerId": null,
+      "productId": null
+    },
+    "preview": {
+      "label": "組版確認用PDF",
+      "source": "dist-book/print/index.html",
+      "output": "dist-books/sample/preview/sample-preview.pdf",
+      "report": "dist-books/sample/reports/preview-report",
+      "size": "A5",
+      "colorMode": "source",
+      "cropMarks": false,
+      "bleedMm": 0,
+      "printerId": null,
+      "productId": null
+    },
+    "generic-print": {
+      "label": "汎用印刷本文PDF",
+      "output": "dist-books/sample/generic-print/sample-body.pdf",
+      "report": "dist-books/sample/reports/generic-print-report"
+    },
+    "print-body": {
+      "extends": "generic-print",
+      "label": "印刷用本文PDF（既存互換）",
+      "output": "dist-books/sample/print/sample-body.pdf",
+      "report": "dist-books/sample/reports/print-body-report"
+    },
+    "print-cover": {
+      "label": "印刷用表紙PDF（既存互換）",
+      "source": "dist-book/cover/index.html",
+      "output": "dist-books/sample/print/sample-cover.pdf",
+      "report": "dist-books/sample/reports/print-cover-report",
+      "size": "154mm,216mm",
+      "colorMode": "full-color",
+      "cropMarks": false,
+      "bleedMm": 3,
+      "printerId": "generic",
+      "productId": "general",
+      "expectedTrimPt": [419.5275, 595.2756]
+    },
+    "nikko-pc-a5-offset": {
+      "extends": "generic-print",
+      "label": "日光企画 A5 オフセット本文",
+      "printerId": "nikko-pc",
+      "productId": "a5-offset",
+      "output": "dist-books/sample/nikko-pc/sample-body.pdf",
+      "report": "dist-books/sample/reports/nikko-pc-a5-offset-report"
+    },
+    "nekono-shippo-a5-pdf": {
+      "extends": "generic-print",
+      "label": "ねこのしっぽ A5 PDF本文",
+      "printerId": "nekono-shippo",
+      "productId": "a5-pdf-perfect-binding",
+      "size": "A5",
+      "cropMarks": false,
+      "output": "dist-books/sample/nekono-shippo/sample-body.pdf",
+      "report": "dist-books/sample/reports/nekono-shippo-a5-pdf-report"
+    }
+  }
+}

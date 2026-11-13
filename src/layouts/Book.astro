@@ -1,0 +1,183 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import book from '../../book.json';
+import '../styles/book.css';
+
+interface Props {
+  edition: 'print' | 'ebook' | 'print-body';
+}
+
+type BookSection = {
+  source: string;
+  title: string;
+  number?: number;
+  summary?: string;
+  color?: string;
+  tint?: string;
+  ink?: string;
+  startOnRight?: boolean;
+};
+
+type RenderedSection = BookSection & {
+  Content: ReturnType<typeof render> extends Promise<infer Result>
+    ? Result extends { Content: infer ContentComponent } ? ContentComponent : never
+    : never;
+  headings: Array<{ depth: number; slug: string; text: string }>;
+};
+
+const { edition } = Astro.props;
+const entries = await getCollection('chapters');
+const entryMap = new Map(entries.map((entry) => [entry.id, entry]));
+
+async function renderSection(section: BookSection): Promise<RenderedSection> {
+  const entry = entryMap.get(section.source);
+  if (!entry) {
+    throw new Error(`書籍設定に指定された原稿が見つかりません: ${section.source}`);
+  }
+
+  const rendered = await render(entry as CollectionEntry<'chapters'>);
+  return { ...section, ...rendered };
+}
+
+const frontMatter = await Promise.all(
+  (book.frontMatter ?? []).map((section) => renderSection(section))
+);
+const chapters = await Promise.all(
+  book.chapters.map((chapter) => renderSection(chapter))
+);
+const backMatter = await Promise.all(
+  (book.backMatter ?? []).map((section) => renderSection(section))
+);
+
+const maxDepth = book.contents?.maxDepth ?? 3;
+const tocItems = chapters.flatMap((chapter) => [
+  {
+    depth: 1,
+    slug: `chapter-${chapter.number}`,
+    text: chapter.title,
+    color: chapter.color,
+    tint: chapter.tint,
+    ink: chapter.ink
+  },
+  ...chapter.headings
+    .filter((heading) => heading.depth <= maxDepth)
+    .map((heading) => ({
+      ...heading,
+      depth: heading.depth,
+      color: chapter.color,
+      tint: chapter.tint,
+      ink: chapter.ink
+    }))
+]);
+
+const pageStyle = [
+  `--page-size: ${book.page.size}`,
+  `--page-top: ${book.page.margins.top}`,
+  `--page-bottom: ${book.page.margins.bottom}`,
+  `--page-inner: ${book.page.margins.inner}`,
+  `--page-outer: ${book.page.margins.outer}`
+].join('; ');
+
+---
+
+<!doctype html>
+<html lang={book.language} class:list={[edition, book.theme, book.codeLineNumbers && 'show-line-numbers']} style={pageStyle}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content={book.author} />
+    <meta name="description" content={book.subtitle} />
+    <meta name="subject" content="日本語技術書の執筆環境とPDF組版" />
+    <meta name="keywords" content="Astro,Vivliostyle,Markdown,PDF,日本語組版" />
+    <title>{book.title}</title>
+  </head>
+  <body>
+    <main class="book">
+      <section class="title-page" aria-label="表題紙">
+        <h1>
+          {book.cover.titleLines.map((line) => <span>{line}</span>)}
+        </h1>
+        <p class="author">{book.author}</p>
+        <p class="cover-event">{book.cover.eventLabel}</p>
+        <p class="cover-version">{book.cover.version}</p>
+      </section>
+
+      {frontMatter.map((section) => (
+        (() => {
+          const Content = section.Content;
+          return (
+            <section class:list={['front-matter', section.source === '00-preface' && 'preface', section.source === '00-content' && 'preface-content']} id={`front-${section.source}`}>
+              {section.source === '00-preface' && (
+                <>
+                  <div class="preface-grid" aria-hidden="true"></div>
+                  <div class="preface-orb" aria-hidden="true"></div>
+                </>
+              )}
+              <header class="matter-title">
+                {section.source === '00-preface' && <p class="preface-eyebrow">WELCOME / 00</p>}
+                {section.source === '00-content' && <p class="preface-eyebrow">WELCOME / 01</p>}
+                <h2>{section.title}</h2>
+              </header>
+              <div class="matter-content"><Content /></div>
+              {section.source === '00-preface' && (
+                <p class="preface-formula">AI × ASTRO × VIVLIOSTYLE</p>
+              )}
+              {section.source === '00-preface' && <span class="preface-page-mark">2</span>}
+              {section.source === '00-content' && <span class="preface-page-mark">3</span>}
+            </section>
+          );
+        })()
+      ))}
+
+      {book.contents?.enabled && (
+        <nav class="toc" aria-label={book.contents.title}>
+          <h2>{book.contents.title}</h2>
+          <ol>
+            {tocItems.map((item) => (
+              <li
+                class:list={[`toc-depth-${item.depth}`]}
+                style={`--chapter-color:${item.color ?? '#1d156b'};--chapter-tint:${item.tint ?? '#f4f6fb'};--chapter-ink:${item.ink ?? '#17203d'};`}
+              >
+                <a href={`#${item.slug}`}>{item.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      {chapters.map((chapter) => (
+        (() => {
+          const Content = chapter.Content;
+          return (
+            <section
+              class:list={['chapter', chapter.startOnRight && 'start-on-right']}
+              style={`--chapter-color:${chapter.color ?? '#1d156b'};--chapter-tint:${chapter.tint ?? '#f4f6fb'};--chapter-ink:${chapter.ink ?? '#17203d'};`}
+              id={`chapter-${chapter.number}`}
+            >
+              <header class="chapter-title">
+                <p class="chapter-number">Chapter {String(chapter.number).padStart(2, '0')}</p>
+                <h2>{chapter.title}</h2>
+                {chapter.summary && <p class="chapter-summary">{chapter.summary}</p>}
+              </header>
+              <div class="chapter-content"><Content /></div>
+            </section>
+          );
+        })()
+      ))}
+
+      {backMatter.map((section) => (
+        (() => {
+          const Content = section.Content;
+          return (
+            <section class:list={['back-matter', section.source === '90-afterword' && 'afterword']} id={`back-${section.source}`}>
+              <header class="matter-title">
+                <h2>{section.title}</h2>
+              </header>
+              <div class="matter-content"><Content /></div>
+            </section>
+          );
+        })()
+      ))}
+    </main>
+  </body>
+</html>

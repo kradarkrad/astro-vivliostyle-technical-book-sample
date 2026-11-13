@@ -1,0 +1,5 @@
+## AstroとVivliostyle
+
+AstroはMarkdownをHTMLへ変換します。Vivliostyleは、そのHTMLとCSSをページとして組版します。
+
+この二つを組み合わせることで、Webページの構造と本のページデザインを分けて管理できます。

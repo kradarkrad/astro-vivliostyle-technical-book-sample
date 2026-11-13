@@ -1,0 +1,109 @@
+@page { size: A5; margin: 0; }
+@page comparison { margin: 15mm; }
+
+:root {
+  --navy: #1d156b;
+  --ink: #17203d;
+  --lime: #cfde22;
+  --cyan: #48c7d9;
+  --coral: #f05d5e;
+  --purple: #8557d6;
+  --paper: #fffdf5;
+  --sans: "BIZ UDPGothic", "Noto Sans JP", "Yu Gothic", sans-serif;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 10pt;
+  line-height: 1.65;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.comparison-page {
+  page: comparison;
+  position: relative;
+  min-height: 165mm;
+  overflow: hidden;
+  break-before: page;
+  page-break-before: always;
+  break-after: page;
+  page-break-after: always;
+  padding: 15mm;
+}
+.comparison-page:last-child { break-after: auto; page-break-after: auto; }
+.comparison-page:first-child { break-before: auto; page-break-before: auto; }
+.eyebrow { margin: 0 0 8mm; color: var(--purple); font-size: 7.5pt; font-weight: 800; letter-spacing: .12em; }
+.page-mark { position: absolute; right: 15mm; bottom: 5mm; color: var(--navy); font-size: 8pt; font-weight: 700; }
+h1, h2 { margin-top: 0; color: var(--navy); font-weight: 800; line-height: 1.15; letter-spacing: -.05em; }
+h1 { margin: 35mm 0 10mm; font-size: 30pt; }
+h1 span, h2 span { color: var(--lime); }
+h2 { margin-bottom: 10mm; font-size: 22pt; }
+.comparison-cover { page: comparison-cover; background: var(--navy); color: white; }
+.comparison-cover .eyebrow { color: var(--lime); }
+.comparison-cover h1 { color: white; }
+.comparison-cover h1 span { color: var(--lime); }
+.comparison-cover > p:not(.eyebrow) { max-width: 90mm; color: #dce1ff; }
+.cover-meta { position: absolute; bottom: 18mm; color: var(--cyan); font-size: 7.5pt; font-weight: 800; letter-spacing: .1em; }
+.current-page { background: white; }
+.current-preface { page: current-preface; }
+.current-content { page: current-content; }
+.current-page .eyebrow { color: #58639a; }
+.current-line { width: 100%; height: 2mm; margin: -4mm 0 14mm; background: var(--lime); }
+.current-page p { max-width: 108mm; margin-bottom: 5mm; text-indent: 1em; }
+.current-sections { display: grid; gap: 3mm; margin-top: 10mm; }
+.current-sections article { padding: 5mm; border-left: 1.5mm solid #d9deea; background: #f4f6fb; }
+.current-sections article:nth-child(1) { border-color: var(--cyan); }
+.current-sections article:nth-child(2) { border-color: var(--lime); }
+.current-sections article:nth-child(3) { border-color: var(--coral); }
+.current-sections b { color: var(--navy); }
+.current-sections p { margin: 2mm 0 0; color: #58639a; font-size: 8pt; line-height: 1.5; text-indent: 0; }
+.hybrid { background: var(--paper); }
+.hybrid-welcome { page: hybrid-welcome; }
+.hybrid-toolkit { page: hybrid-toolkit; }
+.hybrid-grid { position: absolute; inset: 0; opacity: .1; background-image: linear-gradient(var(--cyan) 1px, transparent 1px), linear-gradient(90deg, var(--cyan) 1px, transparent 1px); background-size: 12mm 12mm; }
+.hybrid-orb { position: absolute; right: -24mm; bottom: -16mm; width: 65mm; height: 65mm; border-radius: 50%; background: var(--cyan); }
+.hybrid-copy { position: relative; z-index: 1; }
+.hybrid-welcome .eyebrow { color: var(--navy); }
+.hybrid-welcome h2 { margin-top: 18mm; margin-bottom: 6mm; font-size: 31pt; }
+.hybrid-lead { color: var(--navy); font-size: 15pt; line-height: 1.6; }
+.hybrid-preface { max-width: 105mm; margin-top: 7mm; font-size: 8.5pt; line-height: 1.7; }
+.hybrid-preface p { margin: 0 0 3.5mm; }
+.hybrid-formula { margin-top: 5mm; color: var(--purple); font-size: 8pt; font-weight: 800; letter-spacing: .08em; }
+.option-white { background: white; }
+.option-white .hybrid-orb { background: var(--lime); }
+.option-cyan { background: #eafcff; }
+.option-cyan .hybrid-grid { opacity: .14; }
+.option-cyan .hybrid-orb { width: 70mm; height: 70mm; right: -27mm; bottom: -20mm; background: var(--cyan); }
+.option-band { background: white; }
+.option-band::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 17mm; background: var(--navy); }
+.option-band .hybrid-copy { padding-left: 8mm; }
+.option-band .hybrid-orb { width: 58mm; height: 58mm; right: -18mm; bottom: -12mm; background: var(--purple); }
+.option-ring { background: #f6f7ff; }
+.option-ring .hybrid-grid { background-image: radial-gradient(var(--cyan) 1px, transparent 1px); background-size: 7mm 7mm; opacity: .18; }
+.option-ring .hybrid-orb { width: 62mm; height: 62mm; right: -21mm; bottom: -15mm; background: transparent; border: 7mm solid var(--lime); }
+.hybrid-toolkit { background: #f4f6fb; }
+.hybrid-toolkit h2 { margin-bottom: 5mm; border-bottom: 2mm solid var(--lime); padding-bottom: 3mm; font-size: 19pt; }
+.hybrid-roadmap { display: grid; gap: 1.8mm; margin-top: 5mm; }
+.roadmap-step { display: grid; grid-template-columns: 10mm 1fr auto; align-items: center; gap: 2mm; min-height: 16mm; padding: 2mm 3mm; border-top: 1.5mm solid; background: white; }
+.roadmap-step b { font-size: 14pt; }
+.roadmap-step strong { color: var(--navy); }
+.roadmap-step small { font-size: 7.5pt; }
+.step-lime { border-color: var(--lime); }
+.step-lime b { color: #97a800; }
+.step-cyan { border-color: var(--cyan); }
+.step-cyan b { color: #168b9d; }
+.step-purple { border-color: var(--purple); }
+.step-purple b { color: var(--purple); }
+.step-coral { border-color: var(--coral); }
+.step-coral b { color: var(--coral); }
+.hybrid-tags { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 3mm; }
+.hybrid-tags span { padding: 2mm 3mm; background: var(--lime); color: var(--navy); font-size: 7.5pt; font-weight: 700; }
+.hybrid-tags span:nth-child(2) { background: var(--cyan); }
+.hybrid-tags span:nth-child(3) { background: var(--coral); }
+.hybrid-footer { position: absolute; right: 15mm; bottom: 17mm; color: var(--purple); font-size: 7.5pt; font-weight: 800; letter-spacing: .08em; }
+.hybrid-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-top: 3.5mm; }
+.content-card { padding: 2.5mm; background: white; border-top: 1.5mm solid var(--cyan); }
+.content-card b { color: var(--navy); font-size: 7.8pt; }
+.content-card p { margin: 1mm 0 0; color: #58639a; font-size: 6.5pt; line-height: 1.4; }
+.content-card-audience { border-color: var(--lime); }
+.content-card-tools { border-color: var(--purple); }
+.content-card-repository { grid-column: 1 / -1; border-color: var(--coral); }

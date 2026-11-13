@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "id": "generic",
+  "company": {
+    "id": "generic",
+    "name": "汎用印刷プロファイル",
+    "website": null
+  },
+  "verifiedOn": null,
+  "sourceUrls": [],
+  "products": {
+    "general": {
+      "id": "general",
+      "label": "一般的なデジタル入稿",
+      "printMethod": "unknown",
+      "binding": "unknown",
+      "paper": "unknown",
+      "supportedSizes": ["unknown"],
+      "requirements": {
+        "trimSizeMm": "unknown",
+        "bleedMm": "unknown",
+        "cropMarks": "unknown",
+        "colorMode": "unknown",
+        "pdfFormat": "PDF",
+        "pdfX": "unknown",
+        "fontEmbedding": "unknown",
+        "imageDpi": "unknown",
+        "spineWidth": "unknown",
+        "fileSplit": "unknown"
+      }
+    }
+  },
+  "notes": [
+    "汎用プロファイルは入稿条件を保証しない。",
+    "印刷会社と商品を決めたら、公式仕様を確認した専用プロファイルへ切り替える。"
+  ]
+}

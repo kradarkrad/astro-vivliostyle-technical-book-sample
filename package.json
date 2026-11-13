@@ -1,0 +1,28 @@
+{
+  "name": "astro-vivliostyle-technical-book-sample",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build:book:html": "astro build && node scripts/copy-assets.mjs",
+    "check:book": "npm run build:book:html && node scripts/validate-book.mjs",
+    "build:book:pdf": "npm run check:book && npm exec -- vivliostyle build dist-book/print/index.html -o dist-books/sample-print.pdf && npm exec -- vivliostyle build dist-book/ebook/index.html -o dist-books/sample-ebook.pdf",
+    "build:book:profiles": "node scripts/build-profiles.mjs",
+    "build:book:profile": "node scripts/build-profiles.mjs --profile",
+    "build:book:digital": "node scripts/build-profiles.mjs digital",
+    "build:book:print-body": "node scripts/build-profiles.mjs print-body",
+    "build:book:print-cover": "node scripts/build-profiles.mjs print-cover",
+    "validate:book:pdf": "node scripts/validate-pdfs.mjs",
+    "build:book:all": "npm run build:book:html && node scripts/build-profiles.mjs",
+    "preview:book": "npm run build:book:html && npm exec -- vivliostyle preview dist-book/print/index.html",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "7.3.3",
+    "typescript": "^5.7.0"
+  },
+  "devDependencies": {
+    "@vivliostyle/cli": "11.4.0"
+  }
+}

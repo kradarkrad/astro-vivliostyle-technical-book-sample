@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0",
+  "id": "nikko-pc",
+  "company": {
+    "id": "nikko-pc",
+    "name": "日光企画",
+    "website": "https://www.nikko-pc.com/"
+  },
+  "verifiedOn": "2026-11-03",
+  "sourceUrls": [
+    "https://www.nikko-pc.com/site/home-hd-2/home-qa/",
+    "https://www.nikko-pc.com/site/home-hd-2/home-tombo/"
+  ],
+  "products": {
+    "a5-offset": {
+      "id": "a5-offset",
+      "label": "A5・オフセット・無線綴じ（確認済み範囲）",
+      "printMethod": "offset",
+      "binding": "perfect-binding",
+      "paper": "unknown",
+      "supportedSizes": ["A5"],
+      "requirements": {
+        "trimSizeMm": [148, 210],
+        "bleedMm": 3,
+        "cropMarks": "recommended",
+        "colorMode": {
+          "body": "grayscale",
+          "cover": "unknown",
+          "rgb": "not-supported-for-offset"
+        },
+        "pdfFormat": ["PDF"],
+        "pdfX": "unknown",
+        "fontEmbedding": "unknown",
+        "imageDpi": {
+          "fullColor": 350,
+          "grayscale": 600,
+          "monochrome": 600
+        },
+        "spineWidth": {
+          "formula": "cover-inclusive-page-count * body-paper-thickness-mm",
+          "status": "confirmed-but-paper-dependent"
+        },
+        "fileSplit": "unknown"
+      }
+    },
+    "a5-on-demand": {
+      "id": "a5-on-demand",
+      "label": "A5・オンデマンド（確認済み範囲）",
+      "printMethod": "on-demand",
+      "binding": "unknown",
+      "paper": "unknown",
+      "supportedSizes": ["A5"],
+      "requirements": {
+        "trimSizeMm": [148, 210],
+        "bleedMm": 3,
+        "cropMarks": "recommended",
+        "colorMode": {
+          "body": "unknown",
+          "cover": "unknown",
+          "rgb": "paper-dependent"
+        },
+        "pdfFormat": ["PDF"],
+        "pdfX": "unknown",
+        "fontEmbedding": "unknown",
+        "imageDpi": {
+          "fullColor": 350,
+          "grayscale": 600,
+          "monochrome": 600
+        },
+        "spineWidth": {
+          "formula": "cover-inclusive-page-count * body-paper-thickness-mm",
+          "status": "confirmed-but-paper-dependent"
+        },
+        "fileSplit": "unknown"
+      }
+    }
+  },
+  "notes": [
+    "本文は仕上がりサイズに天地左右各3mmの塗り足し。",
+    "トンボは正確な面付け位置確認のため推奨。",
+    "PDF/X、ICCプロファイル、TrimBox/BleedBoxの受付条件は未確認。",
+    "公式FAQの確認範囲であり、入稿適合性を保証しない。"
+  ]
+}
