@@ -19,10 +19,10 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "7.3.3",
+    "astro": "7.4.12",
     "typescript": "^5.7.0"
   },
   "devDependencies": {
-    "@vivliostyle/cli": "11.4.0"
+    "@vivliostyle/cli": "11.5.0"
   }
 }
